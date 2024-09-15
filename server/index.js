@@ -32,7 +32,7 @@ app.use('/api/comment',commentRoutes);
 
 // middleware for error handling
 app.get('/', (req, res) => {
-    res.send('Welcome to the API');
+    res.send('Welcome to the AP NEW');
   });
 
 app.use((err,req,res,next)=>{

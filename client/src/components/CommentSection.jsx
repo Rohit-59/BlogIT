@@ -23,7 +23,7 @@ const handleSubmit = async(e)=>{
   return;
  }
 try{
- const res = await fetch('/api/comment/create',{
+ const res = await fetch('https://blogit-jixx.onrender.com/api/comment/create',{
   method: 'POST',
   headers:{
     'Content-Type':'application/json'
@@ -46,7 +46,7 @@ useEffect(()=>{
 
   const getComments = async ()=>{
 try {
-  const res = await fetch(`/api/comment/getPostComments/${postId}`)
+  const res = await fetch(`https://blogit-jixx.onrender.com/api/comment/getPostComments/${postId}`)
   if(res.ok){
     const data = await res.json();
     setComments(data);
@@ -66,7 +66,7 @@ const handleLike = async (commentId) => {
       navigate('/sign-in');
       return;
     }
-    const res = await fetch(`/api/comment/likeComment/${commentId}`, {
+    const res = await fetch(`https://blogit-jixx.onrender.com/api/comment/likeComment/${commentId}`, {
       method: 'PUT',
     });
     if (res.ok) {
@@ -103,7 +103,7 @@ const handleDelete = async (commentId) => {
       navigate('/sign-in');
       return;
     }
-    const res = await fetch(`/api/comment/deleteComment/${commentId}`, {
+    const res = await fetch(`https://blogit-jixx.onrender.com/api/comment/deleteComment/${commentId}`, {
       method: 'DELETE',
     });
     if (res.ok) {

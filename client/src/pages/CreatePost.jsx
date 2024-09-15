@@ -68,7 +68,7 @@ const handleUploadImage = async () => {
 
     e.preventDefault();
     try {
-      const res = await fetch('/api/post/create', {
+      const res = await fetch('https://blogit-jixx.onrender.com/api/post/create', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

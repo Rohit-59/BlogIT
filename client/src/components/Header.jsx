@@ -32,7 +32,7 @@ useEffect(()=>{
 
 const handleSignout = async ()=>{
   try {
-    const res = await fetch('/api/user/signout',{
+    const res = await fetch('https://blogit-jixx.onrender.com/api/user/signout',{
       method: 'POST',
     });
   

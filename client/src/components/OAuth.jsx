@@ -21,7 +21,7 @@ try {
   console.log(resultFromGoogle);
 
 
-  const res = await fetch('/api/auth/google',{
+  const res = await fetch('https://blogit-jixx.onrender.com/api/auth/google',{
     method: 'POST',
     headers: {'Content-Type':'application/json'},
     body: JSON.stringify({

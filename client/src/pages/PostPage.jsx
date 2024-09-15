@@ -22,7 +22,7 @@ const fetchPost = async()=>{
 
   try {
     setLoading(true);
-    const res = await fetch(`/api/post/getposts?slug=${postSlug}`);
+    const res = await fetch(`https://blogit-jixx.onrender.com/api/post/getposts?slug=${postSlug}`);
     const data = await res.json();
     console.log("1");
 
@@ -53,7 +53,7 @@ fetchPost();
   useEffect(() => {
     try {
       const fetchRecentPosts = async () => {
-        const res = await fetch(`/api/post/getposts?limit=3`);
+        const res = await fetch(`https://blogit-jixx.onrender.com/api/post/getposts?limit=3`);
         const data = await res.json();
         if (res.ok) {
           setRecentPosts(data.posts);

@@ -30,7 +30,7 @@ const {currentUser} = useSelector((state)=>state.user)
 useEffect(() => {
     try {
       const fetchPost = async () => {
-        const res = await fetch(`/api/post/getposts?postId=${postId}`);
+        const res = await fetch(`https://blogit-jixx.onrender.com/api/post/getposts?postId=${postId}`);
         const data = await res.json();
         console.log('fetched data',data);
         if (!res.ok) {
@@ -98,7 +98,7 @@ const handleUploadImage = async () => {
     e.preventDefault();
     try {
       console.log("Form data just  before sending in url", formData._id)
-        const res = await fetch(`/api/post/updatepost/${formData._id}/${currentUser._id}`, {
+        const res = await fetch(`https://blogit-jixx.onrender.com/api/post/updatepost/${formData._id}/${currentUser._id}`, {
             method: 'PUT',
             headers: {
               'Content-Type': 'application/json',

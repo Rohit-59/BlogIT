@@ -25,6 +25,9 @@ app.use('/api/post', postRoutes);
 app.use('/api/comment',commentRoutes);
 
 // middleware for error handling
+app.get('/', (req, res) => {
+    res.send('Welcome to the API');
+  });
 
 app.use((err,req,res,next)=>{
  const statusCode = err.statusCode || 500;

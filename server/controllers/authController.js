@@ -58,7 +58,8 @@ export const signin = async(req,res,next)=>{
   const {password:pass, ...rest} = validUser._doc;
 
       res.status(200).cookie('access_token',token,{
-         httpOnly:true}).json(rest);
+         httpOnly:true,
+      }).json(rest);
 
 
 
@@ -95,7 +96,7 @@ const newUser = new User({
    profilePicture:googlePhotoUrl
 })
 await newUser.save();
-const token = jwt.sign({id:user._id,isAdmin:newUser.isAdmin},process.env.JWT_SECRET);
+const token = jwt.sign({id:newUser._id,isAdmin:newUser.isAdmin},process.env.JWT_SECRET);
 
 const {password, ...rest} = user._doc;
 

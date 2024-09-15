@@ -15,7 +15,9 @@ const { currentUser } = useSelector((state) => state.user);
 useEffect(() => {
     const getUser = async () => {
       try {
-        const res = await fetch(`https://blogit-jixx.onrender.com/api/user/${comment.userId}`);
+        const res = await fetch(`https://blogit-jixx.onrender.com/api/user/${comment.userId}`,{
+          credentials: 'include',
+        });
         const data = await res.json();
         if (res.ok) {
           setUser(data);
@@ -44,6 +46,7 @@ useEffect(() => {
         body: JSON.stringify({
           content: editedContent,
         }),
+        credentials: 'include',
       });
       if (res.ok) {
         setIsEditing(false);

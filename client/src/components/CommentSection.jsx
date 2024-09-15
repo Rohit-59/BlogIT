@@ -28,7 +28,8 @@ try{
   headers:{
     'Content-Type':'application/json'
   },
-  body: JSON.stringify({content:comment,postId,userId:currentUser._id})
+  body: JSON.stringify({content:comment,postId,userId:currentUser._id}),
+  credentials: 'include'
  })
 const data = await res.json();
 if(res.ok){
@@ -46,7 +47,9 @@ useEffect(()=>{
 
   const getComments = async ()=>{
 try {
-  const res = await fetch(`https://blogit-jixx.onrender.com/api/comment/getPostComments/${postId}`)
+  const res = await fetch(`https://blogit-jixx.onrender.com/api/comment/getPostComments/${postId}`,{
+    credentials: 'include',
+  })
   if(res.ok){
     const data = await res.json();
     setComments(data);
@@ -68,6 +71,7 @@ const handleLike = async (commentId) => {
     }
     const res = await fetch(`https://blogit-jixx.onrender.com/api/comment/likeComment/${commentId}`, {
       method: 'PUT',
+      credentials: 'include'
     });
     if (res.ok) {
       const data = await res.json();
@@ -105,6 +109,7 @@ const handleDelete = async (commentId) => {
     }
     const res = await fetch(`https://blogit-jixx.onrender.com/api/comment/deleteComment/${commentId}`, {
       method: 'DELETE',
+      credentials: 'include'
     });
     if (res.ok) {
       const data = await res.json();

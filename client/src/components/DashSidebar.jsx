@@ -27,6 +27,7 @@ const DashSidebar = () => {
       try {
         const res = await fetch('https://blogit-jixx.onrender.com/api/user/signout',{
           method: 'POST',
+          credentials: 'include',
         });
       
         const data = await res.json();

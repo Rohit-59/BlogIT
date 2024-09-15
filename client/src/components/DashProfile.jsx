@@ -104,6 +104,7 @@ try {
       'Content-Type' : 'application/json',
     },
     body: JSON.stringify(formData),
+    credentials: 'include'
   });
 
   const data = await res.json();
@@ -131,6 +132,7 @@ try {
 
   const res = await fetch(`https://blogit-jixx.onrender.com/api/user/delete/${currentUser._id}`,{
     method: 'DELETE',
+    credentials: 'include'
   });
 
   const data = await res.json();
@@ -156,6 +158,7 @@ const handleSignout = async ()=>{
 try {
   const res = await fetch('https://blogit-jixx.onrender.com/api/user/signout',{
     method: 'POST',
+    credentials: 'include',
   });
 
   const data = await res.json();

@@ -25,7 +25,7 @@ const [formData, setFormData] = useState({});
 const [publishError, setPublishError] = useState(null);
 const navigate = useNavigate();
 
-console.log(formData);
+
 
 const handleUploadImage = async () => {
     try {
@@ -74,6 +74,7 @@ const handleUploadImage = async () => {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(formData),
+        credentials: 'include',
       });
       const data = await res.json();
       if (!res.ok) {

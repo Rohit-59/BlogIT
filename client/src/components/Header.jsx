@@ -34,6 +34,7 @@ const handleSignout = async ()=>{
   try {
     const res = await fetch('https://blogit-jixx.onrender.com/api/user/signout',{
       method: 'POST',
+      credentials: 'include',
     });
   
     const data = await res.json();
@@ -62,7 +63,7 @@ const handleSignout = async ()=>{
     navigate(`/search?${searchQuery}`)
   }
 
-  console.log(searchTerm);
+
 
   return (
     <Navbar className='border-b-2'  >

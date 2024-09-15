@@ -30,7 +30,9 @@ const {currentUser} = useSelector((state)=>state.user)
 useEffect(() => {
     try {
       const fetchPost = async () => {
-        const res = await fetch(`https://blogit-jixx.onrender.com/api/post/getposts?postId=${postId}`);
+        const res = await fetch(`https://blogit-jixx.onrender.com/api/post/getposts?postId=${postId}`,{
+          credentials: 'include'
+        });
         const data = await res.json();
         console.log('fetched data',data);
         if (!res.ok) {
@@ -104,6 +106,7 @@ const handleUploadImage = async () => {
               'Content-Type': 'application/json',
             },
             body: JSON.stringify(formData),
+            credentials: 'include',
           });
       const data = await res.json();
       if (!res.ok) {

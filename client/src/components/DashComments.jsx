@@ -23,7 +23,9 @@ const DashComments = () => {
         const fetchComments = async ()=>{
         
           try {
-            const res = await fetch(`https://blogit-jixx.onrender.com/api/comment/getcomments`);
+            const res = await fetch(`https://blogit-jixx.onrender.com/api/comment/getcomments`,{
+              credentials: 'include',
+            });
             const data = await res.json();
             if(res.ok){
               setComments(data.comments);
@@ -49,7 +51,9 @@ const DashComments = () => {
           const startIndex = comments.length;
           try {
             const res = await fetch(
-              `https://blogit-jixx.onrender.com/api/comment/getcomments?startIndex=${startIndex}`
+              `https://blogit-jixx.onrender.com/api/comment/getcomments?startIndex=${startIndex}`,{
+                credentials: 'include',
+              }
             );
             const data = await res.json();
             if (res.ok) {
@@ -67,6 +71,7 @@ const DashComments = () => {
             try {
                 const res = await fetch(`https://blogit-jixx.onrender.com/api/comment/deleteComment/${commentIdToDelete}`, {
                     method: 'DELETE',
+                    credentials: 'include',
                 });
                 const data = await res.json();
                 if (res.ok) {

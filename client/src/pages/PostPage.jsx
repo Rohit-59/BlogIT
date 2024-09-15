@@ -15,26 +15,28 @@ const PostPage = () => {
  const [post,setPost] = useState(null);
  const [recentPosts, setRecentPosts] = useState(null);
 
- console.log(post);
+
 
   useEffect(()=>{
 const fetchPost = async()=>{
 
   try {
     setLoading(true);
-    const res = await fetch(`https://blogit-jixx.onrender.com/api/post/getposts?slug=${postSlug}`);
+    const res = await fetch(`https://blogit-jixx.onrender.com/api/post/getposts?slug=${postSlug}`,{
+      credentials: 'include',
+    });
     const data = await res.json();
-    console.log("1");
+
 
      if(!res.ok){
       setError(true);
       setLoading(false);
-      console.log("2");
+     
       return;
      }
      if(res.ok){
       setPost(data.posts[0]);
-      console.log("3");
+     
       setLoading(false);
       setError(false);
      }
@@ -53,7 +55,9 @@ fetchPost();
   useEffect(() => {
     try {
       const fetchRecentPosts = async () => {
-        const res = await fetch(`https://blogit-jixx.onrender.com/api/post/getposts?limit=3`);
+        const res = await fetch(`https://blogit-jixx.onrender.com/api/post/getposts?limit=3`,{
+          credentials: 'include',
+        });
         const data = await res.json();
         if (res.ok) {
           setRecentPosts(data.posts);

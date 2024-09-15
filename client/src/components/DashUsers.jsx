@@ -19,7 +19,9 @@ useEffect(() => {
 const fetchUsers = async ()=>{
 
   try {
-    const res = await fetch(`https://blogit-jixx.onrender.com/api/user/getusers`);
+    const res = await fetch(`https://blogit-jixx.onrender.com/api/user/getusers`,{
+      credentials: 'include',
+    });
     const data = await res.json();
     if(res.ok){
       setUsers(data.users);
@@ -45,7 +47,9 @@ const handleShowMore = async () => {
   const startIndex = users.length;
   try {
     const res = await fetch(
-      `https://blogit-jixx.onrender.com/api/user/getusers?startIndex=${startIndex}`
+      `https://blogit-jixx.onrender.com/api/user/getusers?startIndex=${startIndex}`,{
+        credentials: 'include',
+      }
     );
     const data = await res.json();
     if (res.ok) {
@@ -63,6 +67,7 @@ const handleDeleteUser = async ()=>{
     try {
         const res = await fetch(`https://blogit-jixx.onrender.com/api/user/delete/${userIdToDelete}`, {
             method: 'DELETE',
+            credentials: 'include',
         });
         const data = await res.json();
         if (res.ok) {

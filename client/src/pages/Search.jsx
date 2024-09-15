@@ -18,7 +18,7 @@ const [showMore,setShowMore] = useState(false);
 const navigate = useNavigate();
 
 useEffect(() => {
-  console.log("Called effect here")
+  
     const urlParams = new URLSearchParams(location.search);
     const searchTermFromUrl = urlParams.get('searchTerm');
     const sortFromUrl = urlParams.get('sort');
@@ -34,7 +34,9 @@ useEffect(() => {
     const fetchPosts = async () => {
         setLoading(true);
         const searchQuery = urlParams.toString();
-        const res = await fetch(`https://blogit-jixx.onrender.com/api/post/getposts?${searchQuery}`);
+        const res = await fetch(`https://blogit-jixx.onrender.com/api/post/getposts?${searchQuery}`,{
+          credentials: 'include',
+        });
         if (!res.ok) {
           setLoading(false);
           return;
@@ -75,7 +77,9 @@ useEffect(() => {
         const urlParams = new URLSearchParams(location.search);
         urlParams.set('startIndex', startIndex);
         const searchQuery = urlParams.toString();
-        const res = await fetch(`https://blogit-jixx.onrender.com/api/post/getposts?${searchQuery}`);
+        const res = await fetch(`https://blogit-jixx.onrender.com/api/post/getposts?${searchQuery}`,{
+          credentials: 'include'
+        });
         if (!res.ok) {
           return;
         }

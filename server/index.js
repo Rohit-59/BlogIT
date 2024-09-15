@@ -6,9 +6,15 @@ import authRoutes from './routes/authRoute.js'
 import postRoutes from './routes/postRoute.js'
 import commentRoutes from './routes/commentRoute.js'
 import cookieParser from 'cookie-parser';
+import cors from 'cors';
 
 dotenv.config();
 const app = express();
+
+app.use(cors({
+    origin: 'https://blog-it-nine.vercel.app', // Allow your frontend URL
+    credentials: true, // Allow credentials (if you're using cookies or sessions)
+}));
 
 app.use(express.json());
 app.use(cookieParser());

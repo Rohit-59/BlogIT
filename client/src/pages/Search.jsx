@@ -24,29 +24,16 @@ useEffect(() => {
     const urlParams = new URLSearchParams(location.search);
     const searchTermFromUrl = urlParams.get('searchTerm');
     const sortFromUrl = urlParams.get('sort');
-    const categoryFromUrl = urlParams.get('category');
+    const categoryFromUrl = urlParams.get('category') || 'none';
 
     if (searchTermFromUrl || sortFromUrl || categoryFromUrl) {
 
       setSidebarData({
         ...sidebarData,
-        searchTerm: searchTermFromUrl,
-        sort: sortFromUrl
+      searchTerm: searchTermFromUrl || '',
+      sort: sortFromUrl || 'desc',
+      category: categoryFromUrl
       });
-
-      if(!categoryFromUrl){
-        setSidebarData({
-          ...sidebarData,
-          category: 'none',
-        });
-
-      }else{
-        setSidebarData({
-          ...sidebarData,
-          category: categoryFromUrl,
-        });
-
-      }
 
 
       

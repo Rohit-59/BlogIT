@@ -117,9 +117,14 @@ if(sidebarData.category !== 'none'){
   urlParams.set('category', sidebarData.category);
 }else {
   urlParams.delete('category'); // Remove if 'none'
+  urlParams.set('_', Date.now()); 
 }
 
         const searchQuery = urlParams.toString();
+
+
+        urlParams.delete('_'); 
+
         navigate(`/search?${searchQuery}`);
       };
 

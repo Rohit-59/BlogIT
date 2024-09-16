@@ -115,6 +115,8 @@ useEffect(() => {
 if(sidebarData.category !== 'none'){
 
   urlParams.set('category', sidebarData.category);
+}else {
+  urlParams.delete('category'); // Remove if 'none'
 }
 
         const searchQuery = urlParams.toString();

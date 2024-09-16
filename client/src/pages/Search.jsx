@@ -5,10 +5,12 @@ import PostCard from '../components/PostCard';
 
 const Search = () => {
 
+  console.log('Render Check');
+
 const [sidebarData,setSidebarData] = useState({
     searchTerm:'',
     sort:'desc',
-    category:'uncategorized'
+    category:'none'
 });
 
 const location = useLocation();

@@ -23,13 +23,34 @@ useEffect(() => {
     const searchTermFromUrl = urlParams.get('searchTerm');
     const sortFromUrl = urlParams.get('sort');
     const categoryFromUrl = urlParams.get('category');
+
     if (searchTermFromUrl || sortFromUrl || categoryFromUrl) {
+
+
+
+
       setSidebarData({
         ...sidebarData,
         searchTerm: searchTermFromUrl,
-        sort: sortFromUrl,
-        category: categoryFromUrl,
+        sort: sortFromUrl
       });
+
+      if(!categoryFromUrl){
+        setSidebarData({
+          ...sidebarData,
+          category: 'none',
+        });
+
+      }else{
+        setSidebarData({
+          ...sidebarData,
+          category: 'categoryFromUrl',
+        });
+
+      }
+
+
+      
     }
     const fetchPosts = async () => {
         setLoading(true);
@@ -66,7 +87,7 @@ useEffect(() => {
           setSidebarData({ ...sidebarData, sort: order });
         }
         if (e.target.id === 'category') {
-          const category = e.target.value || 'uncategorized';
+          const category = e.target.value || 'none';
           setSidebarData({ ...sidebarData, category });
         }
       };
@@ -104,7 +125,12 @@ useEffect(() => {
           urlParams.delete('searchTerm'); 
         }
         urlParams.set('sort', sidebarData.sort);
-        urlParams.set('category', sidebarData.category);
+
+if(sidebarData.category !== 'none'){
+
+  urlParams.set('category', sidebarData.category);
+}
+
         const searchQuery = urlParams.toString();
         navigate(`/search?${searchQuery}`);
       };
@@ -118,7 +144,7 @@ useEffect(() => {
                 ...sidebarData,
                 searchTerm: '',
                 sort: 'desc',
-                category: 'uncategorized',
+                category: 'none',
               });
 
               navigate('/search');
@@ -153,9 +179,10 @@ useEffect(() => {
 
 <div className='flex gap-2 items-center' >
 <label className=' font-semibold'>Category:</label>
-<Select onChange={handleChange} value={sidebarData.category || 'uncategorized'} id='category'>
+<Select onChange={handleChange} value={sidebarData.category || 'none'} id='category'>
 <option value='uncategorized'>Uncategorized</option>
         <option value='coding'>Coding</option>
+        <option value='none'>None</option>
         <option value='tech'>Technology</option>
         <option value='anime'>Anime</option>
         <option value='movies'>Movies</option>

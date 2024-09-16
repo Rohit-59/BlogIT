@@ -26,9 +26,6 @@ useEffect(() => {
 
     if (searchTermFromUrl || sortFromUrl || categoryFromUrl) {
 
-
-
-
       setSidebarData({
         ...sidebarData,
         searchTerm: searchTermFromUrl,
@@ -44,7 +41,7 @@ useEffect(() => {
       }else{
         setSidebarData({
           ...sidebarData,
-          category: 'categoryFromUrl',
+          category: categoryFromUrl,
         });
 
       }
